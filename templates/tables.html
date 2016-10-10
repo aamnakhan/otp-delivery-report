@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simpl Real Time OTP Delivery</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../static/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="../static/bower_components/metisMenu/dist/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../static/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../static/bower_components/datatables-responsive/css/responsive.dataTables.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="../static/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../static/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/dashboard"><strong>Simpl</strong></a>
+            </div>
+            <!-- /.navbar-header -->
+
+
+            <!-- /.search bar -->
+        <form class="navbar-form navbar-right cover-full search-form disable-padding" role="search" action="/search" method="get" accept-charset="UTF-8">
+          <input name="utf8" type="hidden" value="✓"/>
+          <div class="input-group">
+            <input type="text" name="phoneNo" id="phoneNo" class="form-control cover-full required" placeholder="Search phone number"/>
+            <div class="input-group-btn">
+            <button type="submit" class="btn btn-default cover-full">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+            </div>
+          </div>
+        </form>
+
+            <!-- <ul class="nav navbar-top-links navbar-right"> -->
+
+                <!-- /.dropdown -->
+                <!-- <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul> -->
+            <!-- /.navbar-top-links -->
+        </nav>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">OTP Delivery Dashboard</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+                <div class="panel-heading">
+                    <h5>This dashboard shows OTP delivery information in real time</h5>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Phone Number</th>
+                                            <th>OTP Delivery Timestamp</th>
+                                            <th>Status</th>
+                                            <th>Cause</th>
+                                            <th>Error Code</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {%- for result in results %}
+                                        <tr class="odd gradeX">
+                                            <td>{{result.user_phone_number}}</td>
+                                            <td>{{result.delivery_timestamp}}</td>
+                                            <td>{{result.status}}</td>
+                                            <td>{{result.cause}}</td>
+                                            <td>{{result.error_code}}</td>
+                                        </tr>
+                                        {%- endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.table-responsive -->
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="../static/bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../static/bower_components/metisMenu/dist/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="../static/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script src="../static/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../static/dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+                responsive: true,
+                "order": [[ 1, "desc" ]],
+                "oLanguage": {
+         "sZeroRecords": "No results found",
+         "sSearch": "Search this page:"}
+        });
+    });
+    </script>
+
+</body>
+
+</html>
